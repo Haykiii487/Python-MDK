@@ -18,8 +18,22 @@ def minmax(lst):
         if v < lo: lo = v
         if v > hi: hi = v
     return lo, hi
+
+def mediana(lst):
+ s = sorted(lst) # сортровка копии списка
+ n = len(s) # длина
+ mid = n // 2 # середина
+ if n % 2 == 1: # проверяет кол во чисел в списке
+    return s[mid] # возврат элемента списка по индексу 
+ return (s[mid-1]+ s[mid]) / 2 # возвращает медиану 
+
+
+
+
+
+
  
-print(mean([3, 1, 4]), minmax([3, 1, 4]))
+print(mean([3, 1, 4]), minmax([3, 1, 4])), print(mediana([3, 1, 4]))
 
 with open('titanic.csv', encoding='utf-8') as f:
     header = f.readline().strip().split(',')
@@ -47,3 +61,5 @@ for h, vals in cols.items():
         print(f'{h:12s} n={len(vals):4d} mean={mean(vals):8.2f} min={lo:6.1f} max={hi:6.1f}')
     else:
         print(f'{h:12s} n={len(vals):4d} unique={len(set(vals))}')
+
+        print("median =", mediana(cols['age'])) # выводит медиану 
